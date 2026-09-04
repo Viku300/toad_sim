@@ -1067,6 +1067,14 @@ while True:
                 # The full 7-frame animation must complete before next use
                 player.try_eat()
 
+
+            # DEV BACKDOOR — press F6 to skip to the next evolution
+            if event.key == pygame.K_F6:
+                if player.stage == "tadpole":
+                    player.evolve_to_froglet()
+                elif player.stage == "froglet":
+                    player.evolve_to_toad()
+
     keys = pygame.key.get_pressed()
 
     if player.health > 0 and not player.won:
@@ -1138,4 +1146,3 @@ while True:
     draw_ui(screen, player)
 
     pygame.display.flip()
-    
